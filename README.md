@@ -48,7 +48,4 @@ $ npm run start ou yarn start
 
 # watch mode
 $ npm run start-dev ou yarn start-dev
-
-# test jest
-$ npm run start-dev ou yarn start-dev
 ```
