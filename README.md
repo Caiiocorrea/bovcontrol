@@ -1,8 +1,13 @@
-## Resumo
-Desafio para desenvolvedor backend para empresa BovControl.
+## Desafio para desenvolvedor backend para empresa BovControl.
 
+## Cenário do problema a ser solucionado
 
-## Atividade
+Considere o cenário onde há N fazendeiros que produzem leite e entregam sua produção para uma fábrica de processamento.
+
+O objetivo neste cenário é ter um registro do volume de leite entregue e o preço recebido em cada mês por litro de leite, bem como o montante recebido para a produção mensal.
+
+Para cada semestre do ano o preço do litro de leite é computado usando diferentes regras:
+
 
 |Critério| Primeiro semestre - Jan a Jun | Segundo semestre - Jul a Dez |
 |---|:---:|---|
@@ -22,8 +27,9 @@ Considerando as regras descritas, crie uma API com os seguintes recursos:
 - consulta do preço do litro de leite pago ao fazendeiro, dado um código de fazenda e um mês de parâmetro. Apresentar o preço no formato numérico brasileiro e inglês;
 - consulta do preço do litro de leite pago para cada mês do ano, dado uma fazenda e um ano de parâmetro. Apresentar o preço no formato numérico brasileiro e inglês;
 
-## Obrigatório
-1. Necessário ter mongoDB instalado para criação dos documentos automaticamente;
+
+## Necessários para funcionamento do projeto
+- Necessário ter mongoDB instalado para criação dos documentos automaticamente;
 
 ## Instalação
 
@@ -34,7 +40,7 @@ $ npm install ou yarn install
 ## Documentação API
 http://localhost:3008/api
 
-## Executando o app
+## Executando o projeto
 
 ```bash
 # development
