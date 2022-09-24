@@ -39,7 +39,7 @@ import { FARM_REPOSITORY } from "@/domain/gateways/farm-repository";
 
 
 export const adapters = [
-    { provide: ADRESS_REPOSITORY, useClass: AdressMongooseRepositoryAdapter }, //ENDEREÇO REPOSITORY
+    { provide: ADRESS_REPOSITORY, useClass: AdressMongooseRepositoryAdapter }, //ADRESS_REPOSITORY
     { provide: FARMER_REPOSITORY, useClass: FarmerMongooseRepositoryAdapter },  //FARMER REPOSITORY
     { provide: FARM_REPOSITORY, useClass: FarmMongooseRepositoryAdapter }, //FARM REPOSITORY
 
