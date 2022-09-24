@@ -1,5 +1,5 @@
 import { Adapter, Get, Mapping } from "@tsclean/core";
-import { LOAD_FARMS_SERVICE, ILoadFarmsService } from "../../../../domain/use-cases/farm/dto/load-farms-dto";
+import { LOAD_FARMS_SERVICE, ILoadFarmsService } from "../../../../domain/use-cases/farm/Ifarm/Iload-farms";
 
 @Mapping('api/v1/farms')
 export class LoadFarmsController {

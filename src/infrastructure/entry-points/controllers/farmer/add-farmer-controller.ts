@@ -1,6 +1,6 @@
 import { AddFarmerService } from "@/domain/use-cases/farmer/add-farmer-service";
 import { ValidateFields } from "@/infrastructure/helpers/validate-fields";
-import { ADD_FARMER_SERVICE } from "../../../../domain/use-cases/farmer/dto/add-farmer-dto";
+import { ADD_FARMER_SERVICE } from "../../../../domain/use-cases/farmer/Ifarmer/Iadd-farmer";
 import { Adapter, Body, Mapping, Post } from "@tsclean/core";
 import { FarmerParams } from "@/domain/entities/farmer";
 

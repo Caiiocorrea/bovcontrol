@@ -1,6 +1,6 @@
 import { FARMER_REPOSITORY, IFarmerRepository } from "@/domain/gateways/farmer-repository";
 import { ADRESS_REPOSITORY, IAdressRepository } from "@/domain/gateways/adress-repository";
-import { IAddFarmerService } from "./dto/add-farmer-dto";
+import { IAddFarmerService } from "./Ifarmer/Iadd-farmer";
 import { FarmerParams } from "@/domain/entities/farmer";
 import { Adapter, Service } from "@tsclean/core";
 

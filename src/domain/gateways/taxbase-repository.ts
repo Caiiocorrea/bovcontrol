@@ -16,12 +16,16 @@ export namespace ITaxBaseRepository {
         id?: string | number | object;
         baseprice: number;
         kmPattern: number;
+        semester?: number;
         kmUp: number;
         bonusProduction: number;
     }
 
     export type Params = {
-        semester: number;
+        baseprice?: number;
+        kmPattern?: number;
+        kmUp?: number;
+        bonusProduction?: number;
     }
 
 }

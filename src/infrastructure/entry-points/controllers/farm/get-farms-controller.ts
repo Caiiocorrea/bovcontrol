@@ -1,4 +1,4 @@
-import { GET_FARMS_SERVICE } from "../../../../domain/use-cases/farm/dto/get-farms-dto";
+import { GET_FARMS_SERVICE } from "../../../../domain/use-cases/farm/Ifarm/Iget-farms";
 import { GetFarmsService } from "@/domain/use-cases/farm/get-farms-service";
 import { IFarmRepository } from "@/domain/gateways/farm-repository";
 import { Adapter, Get, Mapping } from "@tsclean/core";

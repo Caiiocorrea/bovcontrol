@@ -1,4 +1,4 @@
-import { IUpdateFarmService, UPDATE_FARM_SERVICE } from "../../../../domain/use-cases/farm/dto/update-farm-dto";
+import { IUpdateFarmService, UPDATE_FARM_SERVICE } from "../../../../domain/use-cases/farm/Ifarm/Iupdate-farm";
 import { ValidateFields } from "@/infrastructure/helpers/validate-fields";
 import { Adapter, Body, Mapping, Param, Put, Req } from "@tsclean/core";
 import { FarmParams } from "@/domain/entities/farm";

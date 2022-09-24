@@ -26,5 +26,7 @@ export namespace ICalculateRepository {
     export type Params = {
         semester: number;
         liter: number;
+        taxbase: number;
+        volumemouth: [];
     }
 }

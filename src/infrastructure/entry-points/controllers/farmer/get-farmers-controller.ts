@@ -1,6 +1,6 @@
 import { GetFarmersService } from "@/domain/use-cases/farmer/get-farmers-service";
 import { Adapter, Get, Mapping } from "@tsclean/core";
-import { GET_FARMERS_SERVICE } from "../../../../domain/use-cases/farmer/dto/get-farmers-dto";
+import { GET_FARMERS_SERVICE } from "../../../../domain/use-cases/farmer/Ifarmer/Iget-farmers";
 
 @Mapping('api/v1/farmers')
 export class GetFarmersController {
