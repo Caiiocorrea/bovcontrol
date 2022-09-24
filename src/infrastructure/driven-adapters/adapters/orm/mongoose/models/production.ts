@@ -1,9 +1,9 @@
-import { ProductionParams } from '@/domain/entities/production';
+import { ProductionProps } from '@/domain/entities/production';
 import mongoose, { model, Schema } from "mongoose";
 import moment from 'moment';
 
-const schema = new Schema({
-    id: String,
+const schema = new Schema<ProductionProps>({
+    id: mongoose.Types.ObjectId,
     farm: { type: mongoose.Types.ObjectId, ref: 'farms' },
     farmer: { type: mongoose.Types.ObjectId, ref: 'farmers' },
     liter: Number,
@@ -14,4 +14,4 @@ const schema = new Schema({
     }
 });
 
-export const ProductionModelSchema = model<any>('production', schema);
+export const ProductionModelSchema = model<ProductionProps>('production', schema);

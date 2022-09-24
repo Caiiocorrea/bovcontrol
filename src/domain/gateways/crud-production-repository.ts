@@ -1,11 +1,10 @@
-import { ProductionParams } from "../entities/production";
 import { FarmerParams } from "../entities/farmer";
 import { FarmParams } from "../entities/farm";
 
 export const PRODUCTION_REPOSITORY = "PRODUCTION_REPOSITORY"
 
 export interface IProductionRepository {
-    getProduction: (id: string) => Promise<ProductionParams>
+    getProductionRepository: (id: string) => Promise<IProductionRepository.Result | IProductionRepository.Exist>
     addProductionRepository: (data: IProductionRepository.Params) => Promise<IProductionRepository.Result | IProductionRepository.Exist>
 }
 
@@ -28,10 +27,18 @@ export namespace IProductionRepository {
     }
 
     export type Params = {
-        farm:  string | number | object;
-        farmer:  string | number | object;
-        liter: number;
+        id?: string;
+        farm?: string | number | object;
+        farmer?: string | number | object;
+        liter?: number;
         price?: number;
+        averagemonthprice?: any | string | number | object;
+        averagemonthliter?: any | string | number | object;
+        price_BRL?: any | string | number | object;
+        price_USD?: any | string | number | object;
+        day?: any | string | number | object;
+        month?: any | string | number | object;
+        year?: any | string | number | object;
     }
 
 }

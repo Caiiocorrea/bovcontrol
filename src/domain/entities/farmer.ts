@@ -1,14 +1,15 @@
 import { Entity } from "../core/domain/entity";
 import { AdressParams } from "./adress";
 
-type FarmerProps = {
+export class FarmerProps {
     id?: string | number | object
     cpfcnpj: string;
     name: string;
     phone: string;
     email: string;
     adress?: AdressParams[];
-    adressId: string | number | object
+    adressId: string | number | object;
+    dateregister: Date;
 }
 
 

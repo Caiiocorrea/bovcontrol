@@ -31,7 +31,7 @@ export namespace IProductionVolumeDayRepository {
         farmer: string
         liter?: number;
         price?: number;
-        dateregister?: string;
+        dateregister?: Date;
     }
 
 }

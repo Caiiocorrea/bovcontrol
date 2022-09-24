@@ -1,31 +1,14 @@
 import { IProductionPriceLiterMothRepository } from "@/domain/gateways/production-price-liter-month-repository";
 import { IProductionVolumeDayRepository } from "@/domain/gateways/production-volume-day-repository";
-import { IProductionRepository } from "@/domain/gateways/production-repository";
+import { IProductionRepository } from "@/domain/gateways/crud-production-repository";
 import { ICalculateRepository } from "@/domain/gateways/calculate-repository";
-import { ITaxBaseRepository } from "@/domain/gateways/taxbase-repository";
+import { ITaxBaseRepository } from "@/domain/gateways/crud-taxbase-repository";
 import { ConvertCoin } from "@/infrastructure/helpers/convert-coin";
 import { ProductionParams } from "@/domain/entities/production";
 import { ProductionModelSchema } from "./models/production";
 import { TaxBaseModelSchema } from "./models/taxbase";
 import mongoose from 'mongoose';
 import moment from "moment";
-
-// console.log("DAY")
-// console.log("day:", moment('2022-09-23').startOf('day').toDate())
-// console.log("day:", moment(moment('2022-09-23').endOf('day').format("YYYY-MM-") + moment().daysInMonth()).toDate())
-
-// console.log("MONTH")
-// console.log("month:", moment('2022-09-23').startOf('month').toDate())
-// console.log("month:", moment(moment('2022-09-23').endOf('month').format("YYYY-MM-") + moment().daysInMonth()).toDate())
-
-// console.log("YEAR")
-// console.log("year:", moment('2022-09-23').startOf('year').toDate())
-// console.log("year:", moment(moment('2022-09-23').endOf('year').format("YYYY-MM-") + moment().daysInMonth()).toDate())
-
-console.log('DIA DO MÊS:', (moment().month()))
-console.log('PRIMEIRO SEMESTRE:', (moment().month() >= 1 && moment().month() <= 6))
-console.log('SEGUNDO SEMETRE:', (moment().month() >= 7 && moment().month() <= 12))
-
 
 export class ProductionMongooseRepositoryAdapter implements
     IProductionRepository,
@@ -37,20 +20,21 @@ export class ProductionMongooseRepositoryAdapter implements
     map(data: any): any {
         const { _id, price, liter, averagemonthliter, averagemonthprice } = data
         return {
-            day: data._id.day,
-            month: data._id.month,
-            year: data._id.year,
+            day: _id.day,
+            month: _id.month,
+            year: _id.year,
             price,
             liter,
             averagemonthprice,
             averagemonthliter,
-            price_BRL: price ? ConvertCoin.convertCoinBRL(price) : 0,
-            price_USD: price ? ConvertCoin.convertCoinUSD(price) : 0
+            price_BRL: ConvertCoin.convertCoinBRL(price),
+            price_USD: ConvertCoin.convertCoinUSD(price)
         }
     }
 
     //PRODUCTION
-    async getProduction(id: string): Promise<ProductionParams | any> {
+    async getProductionRepository(id: string): Promise<IProductionRepository.Result | IProductionRepository.Exist | any> {
+        console.log(id)
         return await ProductionModelSchema.find({ _id: new mongoose.Types.ObjectId(id) }).populate({ path: 'farm' }).populate({ path: 'farmer' })
     }
 
@@ -94,7 +78,7 @@ export class ProductionMongooseRepositoryAdapter implements
                 $match: {
                     farmer: new mongoose.Types.ObjectId(data.farmer),
                     dateregister: {
-                        $gte: moment().month(data.dateregister || Date.now()).startOf('month').toDate(),
+                        $gte: moment(data.dateregister || Date.now()).startOf('month').toDate(),
                         $lte: moment(moment(data.dateregister || Date.now()).endOf('month').format("YYYY-MM-") + moment().daysInMonth()).toDate()
                     },
                 }
@@ -111,7 +95,7 @@ export class ProductionMongooseRepositoryAdapter implements
         ])
 
         console.log(ProductionPriceLiterMonth)
-        return await this.map({ ...ProductionPriceLiterMonth })
+        return this.map(ProductionPriceLiterMonth[0])
     }
 
     async ProductionPriceLiterYear(data: IProductionVolumeDayRepository.Params): Promise<IProductionVolumeDayRepository.Result | any> {
@@ -161,7 +145,7 @@ export class ProductionMongooseRepositoryAdapter implements
         return await TaxBaseModelSchema.findOne({ semester })
     }
 
-    async addTaxBaseRepository(data: any): Promise<any> {
+    async addTaxBaseRepository(data: ITaxBaseRepository.Params): Promise<ITaxBaseRepository.Result | ITaxBaseRepository.Exist | any> {
         return await TaxBaseModelSchema.create(data);
     }
 }

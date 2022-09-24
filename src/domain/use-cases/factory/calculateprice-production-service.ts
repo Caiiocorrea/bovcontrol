@@ -1,6 +1,5 @@
 import { CALCULATE_PRICE_REPOSITORY, ICalculateRepository } from "@/domain/gateways/calculate-repository";
-import { ITaxBaseRepository, TAXBASE_REPOSITORY } from "@/domain/gateways/taxbase-repository";
-import { ICalculatePriceService } from "./Ifactory/Icalculateprice-production";
+import { ITaxBaseRepository, TAXBASE_REPOSITORY } from "@/domain/gateways/crud-taxbase-repository";
 import { Adapter, Service } from "@tsclean/core";
 
 
@@ -11,16 +10,18 @@ export class CalculatePriceService {
         @Adapter(CALCULATE_PRICE_REPOSITORY) private readonly calculateRepository: ICalculateRepository
     ) { }
 
-    protected taxbase: number;
-    protected volumemouth: ICalculateRepository.Result;
+    private taxbase: number;
+    private km: number
+    private volumemouth: {} = []
 
     // Preço = (Volume do mês * Preço base) - (Custo por KM * distância da fazenda até a fábrica) + (Bônus p/ produção * litros entregues no mês)
-    async calculate(semester: ICalculateRepository.Params, liter: ICalculateRepository.Params): Promise<ICalculateRepository.Result | any> {
-        this.volumemouth = await this.volumeMoth(semester.semester, liter.liter)
-        this.taxbase = await this.taxBase(semester.semester)
+    async calculate(semester: any, liter: number, km: number): Promise<ICalculateRepository.Result | any> {
+        this.volumemouth = await this.volumeMoth(semester, liter)
+        this.taxbase = await this.taxBase(semester)
+        this.verifyKM(km)
 
-        if (semester.semester === 1 || 2 && liter.liter >= 10000) return this.caculateMax(liter.liter)
-        if (semester.semester === 1 || 2 && liter.liter <= 10000) return this.caculatePattern(liter.liter)
+        if (semester === 1 || 2 && liter >= 10000) return this.caculateMax(liter)
+        if (semester === 1 || 2 && liter <= 10000) return this.caculatePattern(liter)
     }
 
 

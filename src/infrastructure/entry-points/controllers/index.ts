@@ -9,7 +9,7 @@ import { LoadFarmersController } from "@/infrastructure/entry-points/controllers
 import { GetFarmersController } from "@/infrastructure/entry-points/controllers/farmer/get-farmers-controller";
 import { UpdateFarmerController } from "@/infrastructure/entry-points/controllers/farmer/update-farmer-controller";
 
-import { AddProductionController } from "@/infrastructure/entry-points/controllers/factory/add-production-controller";
+import { ProductionController } from "@/infrastructure/entry-points/controllers/factory/crud-production-controller";
 import { ProductionPriceLiterMothController } from "./factory/production-price-liter-month-controller";
 import { ProductionVolumeDayController } from "./factory/production-volume-day-controller";
 
@@ -28,7 +28,7 @@ export const controllers = [
 
     ProductionPriceLiterMothController,
     ProductionVolumeDayController,
-    AddProductionController,
+    ProductionController,
 
     AddTaxBaseController
 ]

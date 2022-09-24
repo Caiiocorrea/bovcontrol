@@ -19,10 +19,10 @@ export namespace ITaxBaseService {
 
     export type Params = {
         id?: string | number | object;
-        semester?: number;
-        baseprice?: number;
-        kmPattern?: number;
-        kmUp?: number;
-        bonusProduction?: number;
+        semester: number;
+        baseprice: number;
+        kmPattern: number;
+        kmUp: number;
+        bonusProduction: number;
     }
 }

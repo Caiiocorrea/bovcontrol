@@ -1,6 +1,6 @@
 import { Entity } from "../core/domain/entity";
 
-type AdressProps = {
+export class AdressProps {
     id?: string;
     zipcode: string;
     street: string;
@@ -8,7 +8,8 @@ type AdressProps = {
     complement: string;
     district: string;
     state: string;
-    city: string
+    city: string;
+    dateregister: Date;
 }
 
 export class AdressParams extends Entity<AdressProps> {

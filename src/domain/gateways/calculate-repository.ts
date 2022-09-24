@@ -28,5 +28,6 @@ export namespace ICalculateRepository {
         liter: number;
         taxbase: number;
         volumemouth: [];
+        km: number;
     }
 }

@@ -1,8 +1,9 @@
 
-import { AdressParams } from "@/domain/entities/adress";
+import { AdressProps } from "@/domain/entities/adress";
 import mongoose, { model, Schema } from "mongoose";
+import moment from "moment";
 
-const schema = new Schema({
+const schema = new Schema<AdressProps>({
     id: mongoose.Types.ObjectId,
     zipcode: String,
     street: String,
@@ -11,6 +12,10 @@ const schema = new Schema({
     district: String,
     state: String,
     city: String,
+    dateregister: {
+        type: Date,
+        default: moment().utcOffset('-0100').toDate()
+    }
 });
 
-export const AdressModelSchema = model<AdressParams>('adress', schema);
+export const AdressModelSchema = model<AdressProps>('adress', schema);

@@ -11,7 +11,6 @@ export class ProductionPriceLiterMothController {
     @Get()
     async ProductionPriceLiterMonth(@Query() data: IPriceLiterMothServiceService.Params): Promise<IPriceLiterMothServiceService.Result | any> {
         data = await this.productionPriceLiterMothRepository.ProductionPriceLiterMonth(data)
-        console.log(data)
         return { statusCode: 201, body: { message: 'Production successfully registered.', data } }
     }
 }

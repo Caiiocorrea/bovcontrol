@@ -1,13 +1,13 @@
 import { Entity } from "../core/domain/entity";
 
-type taxBaseProps = {
+export class taxBaseProps {
     id?: string | number | object;
     semester: number;
     baseprice: number;
     kmPattern: number;
     kmUp: number;
     bonusProduction: number;
-    dateregister: Date
+    dateregister: Date;
 }
 
 export class taxBaseParams extends Entity<taxBaseProps> {
@@ -20,20 +20,3 @@ export class taxBaseParams extends Entity<taxBaseProps> {
         return taxbase;
     }
 }
-
-
-// {
-//     "semester": 1,
-//     "baseprice": 1.8,
-//     "kmPattern": 0.05,
-//     "kmUp": 0.06,
-//     "bonusProduction": 0
-// }
-
-// {
-//     "semester": 2,
-//     "baseprice": 1.95,
-//     "kmPattern": 0,
-//     "kmUp": 0,
-//     "bonusProduction": 0.01
-// }

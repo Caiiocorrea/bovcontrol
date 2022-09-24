@@ -1,7 +1,8 @@
-export const ADD_PRODUCTION_SERVICE = "ADD_PRODUCTION_SERVICE";
+export const PRODUCTION_SERVICE = "PRODUCTION_SERVICE";
 
 export interface IProductionService {
     addProductionService: (data: IProductionService.Params) => Promise<IProductionService.Result | IProductionService.Exist>
+    getProductionService: (id: string) => Promise<IProductionService.Result | IProductionService.Exist>
 }
 
 export namespace IProductionService {
@@ -20,7 +21,7 @@ export namespace IProductionService {
     }
 
     export type Params = {
-        id?: string;
+        id?: string | number | object;
         farm: string | number | object;
         farmer: string | number | object;
         liter: number;

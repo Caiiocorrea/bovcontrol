@@ -1,12 +1,17 @@
-import { FarmParams } from '@/domain/entities/farm';
+import { FarmProps } from '@/domain/entities/farm';
 import mongoose, { model, Schema } from "mongoose";
+import moment from 'moment';
 
-const schema = new Schema({
+const schema = new Schema<FarmProps>({
     cnpj: String,
     socialReason: String,
     fantasyName: String,
     email: String,
-    adressId: { type: mongoose.Types.ObjectId, ref: 'adress' }
+    adressId: { type: mongoose.Types.ObjectId, ref: 'adress' },
+    dateregister: {
+        type: Date,
+        default: moment().utcOffset('-0100').toDate()
+    }
 });
 
-export const FarmModelSchema = model<FarmParams>('farms', schema);
+export const FarmModelSchema = model<FarmProps>('farms', schema);

@@ -1,11 +1,7 @@
-import { taxBaseParams } from "../entities/taxbase";
-
 export const TAXBASE_REPOSITORY = "TAXBASE_REPOSITORY";
 
 export interface ITaxBaseRepository {
-    // updateTaxBaseRepository: (id: string, data: taxBaseParams) => Promise<ITaxBaseRepository.Result | ITaxBaseRepository.Exist>
-    addTaxBaseRepository: (data: taxBaseParams) => Promise<ITaxBaseRepository.Result | ITaxBaseRepository.Exist>
-    // loadTaxBaseRepository: () => Promise<ITaxBaseRepository.Result | ITaxBaseRepository.Exist>,
+    addTaxBaseRepository: (data: ITaxBaseRepository.Params) => Promise<ITaxBaseRepository.Result | ITaxBaseRepository.Exist>
     getTaxBaseRepository: (semester: number) => Promise<number>,
 }
 

@@ -2,15 +2,15 @@ import { Entity } from "../core/domain/entity";
 import { FarmParams } from "./farm";
 import { FarmerParams } from "./farmer";
 
-type ProductionProps = {
+export class ProductionProps {
     id?: string | number | object
-    farm: FarmParams[];
-    farmer: FarmerParams[];
+    farm: string | number | object;
+    farmer: string | number | object
     liter: number;
     price: number;
-    dateregister?: Date;
     price_BR?: number;
     price_US?: number;
+    dateregister?: Date;
 }
 
 export class ProductionParams extends Entity<ProductionProps> {

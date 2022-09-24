@@ -1,7 +1,7 @@
 import { Entity } from "../core/domain/entity";
 import { AdressParams } from "./adress";
 
-type FarmProps = {
+export class FarmProps {
     id?: object | string | number
     cnpj: string;
     socialReason: string;
@@ -9,6 +9,7 @@ type FarmProps = {
     email: string;
     adressId?: object;
     adress?: AdressParams[];
+    dateregister: Date;
 }
 
 export class FarmParams extends Entity<FarmProps> {
